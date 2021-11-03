@@ -20,11 +20,13 @@ class LicensePlateAPI:
         :return:
         """
         # 预测车牌位置并得到裁剪后车牌图像
+        assert not img is None, print("图片出错：图片类型应为RGB")
         det = self.detector(img)  # 检测车牌位置
-        crop = getPlateArea(img, det)  # 裁剪车牌
-
-        # 车牌识别
-        res = self.recognizer(crop)  # 识别得到内容和置信度
-        if self.getdet:
-            return det, res
-        return res
+        if not det is None:
+            crop = getPlateArea(img, det)  # 裁剪车牌
+            # 车牌识别
+            res = self.recognizer(crop)  # 识别得到内容和置信度
+            if self.getdet:
+                return det, res
+            return res
+        return None
