@@ -9,6 +9,7 @@
 **1. 安装依赖**
 requirements.txt定义了需要的库以及版本，你需要运行以下代码安装：
 `pip install -r requirements.txt`
+
 **2. 使用**
 你可以从test.py脚本中看到使用实例
 ```python
